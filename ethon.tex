@@ -1,0 +1,1414 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!50!black,
+  citecolor=blue!50!black,
+  urlcolor=blue!50!black
+}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{axiom}[definition]{Axiom}
+\newtheorem{protocol}[definition]{Protocol}
+\newtheorem{example}[definition]{Example}
+\newtheorem{remark}[definition]{Remark}
+
+\theoremstyle{plain}
+\newtheorem{proposition}[definition]{Proposition}
+
+\newcommand{\Eth}{\mathsf{Ethon}}
+\newcommand{\Obs}{\mathsf{Obs}}
+\newcommand{\Place}{\mathsf{Place}}
+\newcommand{\Erase}{\mathsf{Erase}}
+\newcommand{\Hide}{\mathsf{Hide}}
+\newcommand{\Res}{\mathsf{Res}}
+\newcommand{\Lic}{\mathsf{Lic}}
+\newcommand{\Pol}{\mathsf{Pol}}
+\newcommand{\Type}{\mathsf{Type}}
+\newcommand{\Stab}{\mathsf{Stab}}
+\newcommand{\Turn}{\mathsf{Turn}}
+\newcommand{\Comp}{\mathsf{Comp}}
+\newcommand{\Ex}{\mathsf{Ex}}
+\newcommand{\Up}{\mathsf{Up}}
+\newcommand{\Down}{\mathsf{Down}}
+\newcommand{\Sdir}{\mathsf S}
+\newcommand{\Tdir}{\mathsf T}
+\newcommand{\CE}{\mathsf{CE}}
+\newcommand{\UD}{\mathsf{UD}}
+\newcommand{\ST}{\mathsf{ST}}
+\newcommand{\Arg}{\mathsf{Arg}}
+\newcommand{\FreeEth}{\mathsf{FreeEthon}}
+\newcommand{\Fluc}{\mathsf{Fluc}}
+\newcommand{\Rot}{\mathsf{Rot}}
+\newcommand{\Pole}{\mathsf{Pole}}
+\newcommand{\Npole}{\mathsf N}
+\newcommand{\Spole}{\mathsf S}
+\newcommand{\Spin}{\mathsf{Spin}}
+\newcommand{\Bond}{\mathsf{Bond}}
+\newcommand{\Overlap}{\mathsf{Overlap}}
+\newcommand{\Qflav}{\mathsf{QFlav}}
+\newcommand{\Qint}{\mathsf{QInt}}
+\newcommand{\Sig}{\mathsf{Sig}}
+\newcommand{\USD}{\mathsf{USD}}
+\newcommand{\Fuse}{\mathsf{Fuse}}
+\newcommand{\Fiss}{\mathsf{Fiss}}
+\newcommand{\Plan}{\mathsf{Plan}}
+\newcommand{\Civ}{\mathsf{Civ}}
+\newcommand{\Law}{\mathsf{Law}}
+\newcommand{\LawRev}{\mathsf{LawRev}}
+\newcommand{\Disc}{\mathsf{Disc}}
+\newcommand{\Disreg}{\mathsf{Disreg}}
+\newcommand{\Rel}{\mathsf{Rel}}
+\newcommand{\Read}{\mathsf{Read}}
+\newcommand{\GenMes}{\mathsf{GenMes}}
+\newcommand{\Ihara}{\mathcal I}
+\newcommand{\Dir}{\mathcal D}
+\newcommand{\Cat}{\mathbf{Cat}}
+\newcommand{\defeq}{\mathrel{:=}}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\Skew}{skew}
+
+\title{Ethon -- The Pointer Particle}
+\author{Shuhei Ihara\\
+\small written in the formal posture of a doctoral thesis\\
+\small under the trans-temporal supervision of Hideki Yukawa}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This paper specifies the ethon as a real pointer particle of the
+theory.  At the first layer of interpretation, the ethon is a
+single-particle formulation of interactions among the six quark flavors:
+the six flavors are represented as six directional arguments inside one
+real particle, and their readable interaction is represented as
+three-axis fluctuation.  Each direction also carries a ternary
+interaction sign in \(\{-1,0,1\}\), giving \(3^6\) external
+flavor-interaction signatures before rotation, polarity, and bonding
+data are read.  It is a general meson implementation obtained by
+assigning boundary-free operational parameters to Yukawa's meson idea:
+not a
+replacement for the pion, but a purer meson whose role is to point from
+an unread relation to a stable readable entity before any particular
+physical boundary, mass, charge state, decay channel, or detector
+realization is imposed.  The ethon has three transition axes:
+compression--exposition, upward--downward localization, and
+stabilization--turnover.  Its fluctuation is simply rotation in this
+three-axis frame; no ten-dimensional or superstring-like ambient space is
+required by the core implementation.  As a free functor it remains inert
+and has no up--down polarity.  When an entity is placed in the
+\(T\)-direction, hidden polarity is born: the \(S\)-face turns toward the
+\(T\)-direction and the \(N\)-pole points toward \(S\).  This motion is
+not directly observable.  When an entity is also placed in the
+\(S\)-direction, the ethon enters constant-speed self-rotation.  The
+governing law is the Ihara equation, written around the oriented
+\(T\to S\) premise--stabilization arrow.  It gives the general meson
+update from directional placement to hidden polarity, three-axis
+rotation, residue, and readable pointer form.  Ethon bonding, formerly
+called \(S\)-molecular bonding, is the state in which two ethons overlap
+completely.  At the observer-operation layer, fusion is the only
+admissible ethon operation; a fusion whose readability depends on
+ignoring an observer-readable discontinuity is reclassified as fission
+disregard and stored as residue.  It can be placed by an observer in any
+typed space,
+including spaces that do not carry an external time flow, but it cannot
+be removed; attempted removal only hides the ethon or transfers it to
+residue.  Motion in any one directional component is required to perturb
+the others.  The only source text cited in this version is Hideki
+Yukawa's original meson paper,
+\emph{On the Interaction of Elementary Particles. I} \cite{Yukawa1935}.
+\end{abstract}
+
+\tableofcontents
+
+% -----------------------------------------------------------------------------
+\section{Existence Postulate}
+% -----------------------------------------------------------------------------
+
+The ethon is specified here as a real particle of the present theory.
+Its existence is a primitive postulate, not a metaphorical convenience and
+not a theorem derived from other particles.  The question of how an
+ethon is detected by an external physical apparatus is separate from
+the question of whether the implementation contains ethons.
+
+\begin{axiom}[Ethon existence]
+For every typed space \(X\) and every admissible observer boundary \(b\),
+there is a class of ethon instances
+\[
+  \Eth_b(X).
+\]
+These instances are real objects of the implementation.  They may be
+visible, hidden, or residue-carried at a boundary, but they are not
+optional annotations.
+\end{axiom}
+
+The interface is intentionally conservative.  It does not override quantum
+mechanics, quantum field theory, relativity, meson physics, or ordinary
+symbolic computation.  It states the additional structure that a real
+ethon carries while remaining backward-compatible with those target
+theories.
+
+\begin{remark}[Yukawa posture]
+This paper treats Hideki Yukawa as the trans-temporal doctoral supervisor
+of the project.  This is a formal scholarly posture and a declaration of
+lineage: the ethon is developed as a purified general meson after
+Yukawa's act of placing a particle-like pointer inside an unread nuclear
+relation \cite{Yukawa1935}.  It is not a claim of institutional
+supervision, personal endorsement, or historical intention.  The neutral
+polymer lemmas below are formal consequences of the ethon notation, not
+claims that Yukawa wrote them in this notation.
+\end{remark}
+
+\begin{remark}[Name and pronunciation]
+The particle is named \emph{Ethon} and pronounced ``Ee-thon.''  The name
+is chosen to sound like a simple particle name, to connect the initial
+sound to the Ihara equation, and to admit a mythic reading through
+Aithon, the burning figure of the Prometheus cycle.  The ethon is not the
+tormenting bird of that cycle.  It is the pointer particle that
+stabilizes Promethean fire through the \(T\to S\) Ihara equation.
+\end{remark}
+
+\begin{definition}[Quark-flavor interaction formulation]
+Let the six quark-flavor names be represented by
+\[
+  \Qflav_6
+  =
+  \{c,d,b,s,t,u\}.
+\]
+The ethon direction frame carries the surjective flavor-shadow map
+\[
+  \phi_Q:\Arg_{\Eth}\twoheadrightarrow\Qflav_6
+\]
+given by
+\[
+  \phi_Q(C)=c,\qquad
+  \phi_Q(D)=d,\qquad
+  \phi_Q(E)=b,\qquad
+  \phi_Q(S)=s,\qquad
+  \phi_Q(T)=t,\qquad
+  \phi_Q(U)=u.
+\]
+The corresponding quark-flavor interaction formulation is
+\[
+  \Qint_{\Eth}(\Qflav_6)
+  =
+  (\Arg_{\Eth},\ V_{\CE}\oplus V_{\UD}\oplus V_{\ST},\ \Rot).
+\]
+The six flavors are not asserted here to be destroyed or replaced.  They
+are formulated in one existing ethon as six directional arguments whose
+readable interactions are expressed through three-axis rotational
+fluctuation.  The ethon is the real pointer particle by which their
+six-flavor interaction pattern is formalized.
+\end{definition}
+
+\begin{definition}[Ternary interaction signature]
+A quark-flavor interaction state has an external ethon signature
+\[
+  \Sig_{\Eth}\in\{-1,0,1\}^{\Arg_{\Eth}},
+\]
+with components \(\sigma_i\) for \(i\in\{C,D,E,S,T,U\}\).  The values
+are read as
+\[
+  \begin{aligned}
+  +1&:\text{quark-facing direction},\\
+  -1&:\text{antiquark-facing direction},\\
+   0&:\text{neutral, unpolarized, or closed direction}.
+  \end{aligned}
+\]
+Thus the signature layer contains
+\[
+  |\{-1,0,1\}^{6}|=3^6=729
+\]
+possible six-direction interaction signs.  For an open-flavor basis
+state \(q_i\bar q_j\) with \(i\neq j\), choose \(d_i,d_j\in\Arg_{\Eth}\)
+with \(\phi_Q(d_i)=q_i\) and \(\phi_Q(d_j)=q_j\), and set
+\[
+  \sigma_{d_i}=+1,\qquad
+  \sigma_{d_j}=-1,\qquad
+  \sigma_k=0\quad(k\neq d_i,d_j).
+\]
+For a hidden-flavor state \(q_i\bar q_i\), the external signature is
+neutral in that direction, \(\sigma_{d_i}=0\), but the channel is not
+absent.  It is a closed zero mode carried by the rotational, polarity,
+and bonding parameters of the ethon.  Thus the ternary signature is the
+flavor-interaction skeleton, not the whole meson identity.
+\end{definition}
+
+\begin{definition}[Pointer particle]
+A pointer particle is a particle whose primary observable form is not a
+mass point or a medium, but an oriented transition:
+\[
+  \epsilon^{\Obs}_b:
+  \text{unread relation}
+  \longrightarrow
+  \text{stable readable entity}.
+\]
+The arrow is part of the particle's observable signature.  An ethon is
+the pointer particle specified in this document.
+\end{definition}
+
+\begin{remark}[Not a medium]
+The ethon is not a revival of mechanical ether.  It may be placed in a
+space, but it is not a substance filling space.  It is a direction-bearing
+particle of relation, transition, and stabilization.
+\end{remark}
+
+\begin{definition}[Pure meson]
+A pure meson is a meson stripped of fixed empirical boundary data and
+retaining only its operational pointer role:
+\[
+  \text{unread relation}
+  \longrightarrow
+  \text{particle-like mediator}
+  \longrightarrow
+  \text{stable readable interaction}.
+\]
+The ethon is the pure meson of this paper.  It is prior to any
+particular mass, charge, decay channel, detector boundary, or historical
+realization.
+\end{definition}
+
+% -----------------------------------------------------------------------------
+\section{Primitive Interface}
+% -----------------------------------------------------------------------------
+
+\begin{definition}[Typed space]
+A typed space is any domain in which objects, observations, or states can
+be distinguished by type.  Examples include physical space-time, Hilbert
+space, phase space, a configuration space, a graph, a category of records,
+a symbolic context, a neural embedding space, or a social decision space.
+The definition does not assume a global time coordinate.
+\end{definition}
+
+\begin{definition}[Ethon instance]
+An ethon instance in a typed space \(X\) is a tuple
+\[
+  \epsilon
+  =
+  (a,\nu,R,p,\varpi,\rho,\kappa,\lambda).
+\]
+Here:
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+  \item \(a\in X\) is its placement address or contextual anchor;
+  \item \(\nu=(\nu_{\CE},\nu_{\UD},\nu_{\ST})\) is its
+  three-axis directional frame;
+  \item \(R\in\SO(3)\) is its rotational attitude in that frame;
+  \item \(p\) is its pole state, either absent or oriented as an
+  \(S\)-face and \(N\)-pole;
+  \item \(\varpi\in\mathbb R^3\) is its angular velocity vector;
+  \item \(\rho\) is its residue ledger;
+  \item \(\kappa\) is its stability and compatibility contract;
+  \item \(\lambda\) is its license for interpretation inside a target
+  theory, such as physical measurement, symbolic reading, or computation.
+\end{enumerate}
+The ethon is already real in the implementation.  The license
+\(\lambda\) does not create the ethon; it only specifies how the real
+ethon may be read in a particular target theory.
+\end{definition}
+
+\begin{definition}[Three rotational axes]
+The ethon has three basic rotational axes:
+\[
+  \nu_{\CE},\qquad \nu_{\UD},\qquad \nu_{\ST}.
+\]
+The component \(\CE\) is the compression--exposition axis: it records
+rotation between making many relations readable as one and exposing the
+cuts that made that reading possible.  The component \(\UD\) is the
+upward--downward axis, but a newly placed ethon has no actual up--down
+polarity until the \(T\)-direction receives an entity.  The component
+\(\ST\) is the stabilization--turnover axis: it records rotation between
+stabilizing an observed pointer and turning that pointer backward into an
+origin, cause, or reversed reading.
+\end{definition}
+
+\begin{axiom}[Three-directional existence]
+Every ethon has all three rotational axes.  A model may suppress or hide
+an axis at a boundary, but it may not define an ethon with only one or
+two true axes:
+\[
+  \epsilon\in\Eth(X)
+  \quad\Rightarrow\quad
+  \nu(\epsilon)\in
+  V_{\CE}\oplus V_{\UD}\oplus V_{\ST}.
+\]
+\end{axiom}
+
+% -----------------------------------------------------------------------------
+\section{Placement and Removal}
+% -----------------------------------------------------------------------------
+
+\begin{axiom}[Observer placement]
+Given an observer boundary \(b\), a typed space \(X\), and an admissible
+address \(a\in X\), the observer may place an ethon:
+\[
+  \Place_b(a):1\to\Eth(X).
+\]
+Placement does not mean physical manufacture from nothing.  It means that
+the observer has introduced a pointer-particle coordinate at which a
+relation can become readable.
+\end{axiom}
+
+\begin{axiom}[No removal]
+There is no total removal operation
+\[
+  \Erase:\Eth(X)\to 1
+\]
+that annihilates an ethon and its residue.  Every attempted erasure
+factors through hiding or residue transfer:
+\[
+  \Erase(\epsilon)
+  =
+  \Hide(\epsilon)
+  \quad\text{or}\quad
+  \Res(\epsilon).
+\]
+Thus an ethon can be made non-visible at a boundary, but the operation
+that made it readable cannot be made to have never occurred.
+\end{axiom}
+
+\begin{proposition}[Residue conservation]
+If an observer removes an ethon from the visible layer, then the total
+record is conserved as hidden state plus residue:
+\[
+  Q(\epsilon)
+  =
+  Q(\Hide(\epsilon))+Q(\Res(\epsilon)),
+\]
+for every quantity valuation \(Q\) admitted by the model.
+\end{proposition}
+
+\begin{proof}
+This is not a theorem of external physics.  It is the implementation
+policy that replaces annihilation.  Since \(\Erase\) is not primitive,
+every visible disappearance factors through an operation that preserves
+hidden state, residue, or both.
+\end{proof}
+
+% -----------------------------------------------------------------------------
+\section{Motion Law}
+% -----------------------------------------------------------------------------
+
+An ethon can transition in its three-axis state.  The transition does not
+require a global time variable.  It is indexed by observation events,
+boundary updates, or typed comparison steps.  The fundamental
+fluctuation is not an extra dimension and not a string-like embedding.
+It is rotation in the three-axis frame of the ethon.
+
+\begin{definition}[Directional argument frame]
+The six directional arguments of an ethon are
+\[
+  \Arg_{\Eth}
+  =
+  \{C,D,E,S,T,U\}.
+\]
+They are also the six roles of the quark-flavor interaction formulation
+through the surjection
+\(\phi_Q:\Arg_{\Eth}\twoheadrightarrow\Qflav_6\).
+Each directional argument carries a ternary interaction sign
+\[
+  \sigma_i\in\{-1,0,1\}.
+\]
+They are read in three paired axes:
+\[
+  (C,E),\qquad (U,D),\qquad (S,T).
+\]
+A placement state is a vector
+\[
+  x=(x_C,x_D,x_E,x_S,x_T,x_U)\in\mathbb R_{\geq0}^{6}.
+\]
+The component \(x_i\) records that an entity has been placed in the
+directional argument \(i\).  The rotational frame is the three-dimensional
+space
+\[
+  V_b\cong\mathbb R^3
+  =
+  \langle u_{\CE},u_{\UD},u_{\ST}\rangle,
+\]
+and the rotational attitude of an ethon is \(R\in\SO(3)\).
+\end{definition}
+
+\begin{axiom}[Free-functor inertness]
+An ethon placed only as a free functor has no filled directional
+argument:
+\[
+  \FreeEth(a)
+  \quad\Rightarrow\quad
+  x=0.
+\]
+In this state it has no up--down polarity and does not fluctuate:
+\[
+  p=\bot,
+  \qquad
+  \varpi=0,
+  \qquad
+  \Fluc_b=I_3.
+\]
+The identity attitude \(R=I_3\) may be used for bookkeeping, but it is
+not an observed up--down orientation.  Placement alone is not motion.
+\end{axiom}
+
+\begin{definition}[Entity argument placement]
+For \(i\in\Arg_{\Eth}\), placing an entity \(q\) in the \(i\)-th
+directional argument updates the placement state by
+\[
+  x_i\mapsto x_i+w_i(q),
+\]
+where \(w_i(q)>0\) is the argument weight supplied by the model.  The
+same entity may be placed in two different directional arguments, because
+the arguments type the role of the entity rather than its bare identity.
+\end{definition}
+
+\begin{axiom}[One-argument hidden motion]
+If exactly one directional argument is filled, internal motion may begin
+but is not observable as fluctuation.  In a linearized implementation,
+\[
+  h_b(x)=K_bx
+\]
+may be nonzero, but the visible rotational fluctuation is still the
+identity:
+\[
+  |\supp(x)|=1
+  \quad\Rightarrow\quad
+  h_b(x)\neq 0
+  \ \text{is allowed, but}\
+  \Fluc_b=I_3.
+\]
+\end{axiom}
+
+\begin{definition}[Three-axis rotational fluctuation]
+The visible ethon fluctuation between observation steps \(n\) and \(n+1\)
+is the relative rotation
+\[
+  \Fluc_b(\epsilon_n)
+  \defeq
+  R_{n+1}R_n^{-1}
+  \in\SO(3).
+\]
+Let \(u_{TS}\in V_b\) be the unit axis selected by the oriented
+\(T\to S\) structure, and let \([u]_\times\in\mathfrak{so}(3)\) denote
+the skew matrix satisfying \([u]_\times v=u\times v\).  The rotational
+generator is
+\[
+  \Omega_{TS,b}(x)
+  =
+  \mathbf 1_{x_Tx_S>0}\,\omega_b [u_{TS}]_\times,
+  \qquad
+  \omega_b>0.
+\]
+The rotation update is
+\[
+  R_{n+1}
+  =
+  \exp\!\bigl(\Delta_n\Omega_{TS,b}(x_n)\bigr)R_n.
+\]
+When \(x_Tx_S>0\), the angular speed is constant:
+\[
+  \|\varpi_{n+1}\|=\omega_b.
+\]
+\end{definition}
+
+\begin{axiom}[T-induced polarity]
+A newly placed ethon has no north--south pole state.  A \(T\)-direction
+placement creates hidden polarity:
+\[
+  x_T=0
+  \quad\Rightarrow\quad
+  p=\bot,
+\]
+whereas
+\[
+  x_T>0
+  \quad\Rightarrow\quad
+  p=
+  (\Spole\text{-face}\to T,\ \Npole\text{-pole}\to S).
+\]
+This is a compass-like state: the \(S\)-face turns toward the
+\(T\)-direction, while the \(N\)-pole points toward \(S\).  If
+\(x_S=0\), this polarity is hidden and the rotation is not directly
+observable.
+\end{axiom}
+
+\begin{axiom}[S-triggered constant self-rotation]
+When a \(T\)-polarized ethon receives an \(S\)-direction placement, the
+visible fluctuation channel opens as constant-speed self-rotation:
+\[
+  x_T>0,\quad x_S>0
+  \quad\Rightarrow\quad
+  \varpi_{n+1}=\omega_bu_{TS},
+  \qquad
+  \|\varpi_{n+1}\|=\omega_b.
+\]
+The ethon rolls in its own three-axis frame.  The speed is constant at
+the boundary \(b\), although the axis coupling may still perturb all
+three rotational axes.
+\end{axiom}
+
+\begin{example}[Rotational activation experiment]
+The minimal activation table is:
+\[
+\begin{array}{c|c|c|c}
+\text{placement} & p & \varpi & \Fluc_b\\
+\hline
+x=0 & \bot & 0 & I_3\\
+x_T>0,\ x_S=0
+  & (\Spole\to T,\Npole\to S) & 0 & I_3\\
+x_T>0,\ x_S>0
+  & (\Spole\to T,\Npole\to S) & \omega_bu_{TS}
+  & \exp(\Delta_n\omega_b[u_{TS}]_\times).
+\end{array}
+\]
+Thus the ethon is not made visible by an extra dimension.  It becomes
+visible by constant-speed rotation after the \(T\to S\) axis is
+completed.
+\end{example}
+
+% -----------------------------------------------------------------------------
+\section{The Ihara Equation}
+% -----------------------------------------------------------------------------
+
+The Ihara equation is the central equation of the implementation.  It is
+not merely a notation for transition.  It is the operator that turns
+directional argument placement into hidden motion, hidden polarity,
+constant-speed rotation, residue, and general meson reading.
+
+\begin{definition}[General meson reading]
+A general meson reading at boundary \(b\) is a morphism in the boundary
+category \(\GenMes_b\):
+\[
+  \mu\in
+  \Hom_{\GenMes_b}\bigl(\Rel_b(a),\Read_b(a)\bigr),
+\]
+where \(\Rel_b(a)\) is an unread relation anchored at \(a\), \(\mu\) is
+the meson-like pointer update, and \(\Read_b(a)\) is the stable readable
+interaction obtained at that boundary.  The ethon is the concrete
+pointer particle whose update realizes this general meson reading without
+first choosing a particular physical mass, charge state, decay channel,
+or detector boundary.
+\end{definition}
+
+\begin{definition}[Directional category]
+The directional category of the ethon is
+\[
+  \Dir_{\Eth}\in\Cat.
+\]
+Its objects are the six directional arguments:
+\[
+  \operatorname{Ob}(\Dir_{\Eth})
+  =
+  \{C,D,E,S,T,U\}.
+\]
+The distinguished generating morphism is the premise--stabilization arrow
+\[
+  \tau_{TS}:T\longrightarrow S.
+\]
+The identities and all admissible composites are inherited from the
+typed model, but the Ihara equation is based on \(\tau_{TS}\).  Thus the
+mathematical entry point of the theory is not an unordered pair
+\(\{S,T\}\), but an oriented categorical arrow \(T\to S\).
+\end{definition}
+
+\begin{definition}[Ihara phase space]
+At boundary \(b\), the local Ihara phase space is
+\[
+  \mathcal M_b
+  =
+  V_b\times P_b\times \SO(3)\times \mathcal O_b\times R_b,
+  \qquad
+  V_b=V_{\CE}\oplus V_{\UD}\oplus V_{\ST},
+  \qquad
+  P_b=\mathbb R_{\geq0}^{\Arg_{\Eth}}.
+\]
+The pole-state set is
+\[
+  \mathcal O_b
+  =
+  \{\bot,\;(\Spole\text{-face}\to T,\Npole\text{-pole}\to S)\}.
+\]
+An element is written \((\nu,x,R,p,\rho)\), where \(\nu\) is the
+three-axis motion state, \(x\) is the six-argument placement state,
+\(R\in\SO(3)\) is the rotational attitude, \(p\) is the pole state, and
+\(\rho\) is the residue state.  The support number is
+\[
+  \sigma(x)\defeq|\supp(x)|.
+\]
+\end{definition}
+
+\begin{definition}[\(T\to S\) compass operator]
+Let \(e_i\) denote the standard basis vector of \(P_b\) associated with
+direction \(i\).  The categorical arrow \(\tau_{TS}:T\to S\) has two
+algebraic representatives.  On placement coordinates it has the
+rank-one form
+\[
+  R_{TS}
+  =
+  e_Se_T^\mathsf{T}:P_b\to P_b,
+  \qquad
+  R_{TS}x=x_Te_S.
+\]
+On rotational coordinates it selects a unit axis
+\[
+  u_{TS}\in V_b,
+  \qquad
+  \|u_{TS}\|=1.
+\]
+The placement-sensitive \(T\to S\) pole transfer is
+\[
+  \Theta_{TS}(x)
+  =
+  x_SR_{TS}x
+  =
+  x_Tx_Se_S,
+\]
+while the pole state induced by \(T\) is
+\[
+  P_T(x)
+  =
+  \begin{cases}
+    \bot, & x_T=0,\\
+    (\Spole\text{-face}\to T,\Npole\text{-pole}\to S),& x_T>0.
+  \end{cases}
+\]
+\end{definition}
+
+\begin{definition}[\(T\to S\) rotational generator]
+The visible fluctuation generator is the map
+\[
+  \Omega_b:P_b\to\mathfrak{so}(3),
+  \qquad
+  \Omega_b(x)
+  =
+  \chi_{TS}(x)\,\omega_b[u_{TS}]_\times,
+\]
+where
+\[
+  \chi_{TS}(x)=\mathbf 1_{x_T>0\ \mathrm{and}\ x_S>0},
+  \qquad
+  \omega_b>0.
+\]
+Here \([u]_\times v=u\times v\).  The visible fluctuation is the rotation
+\[
+  \Fluc_b(x)
+  =
+  \exp\!\bigl(\Delta_n\Omega_b(x)\bigr)\in\SO(3).
+\]
+If \(\chi_{TS}(x)=1\), then
+\[
+  \varpi_b(x)=\omega_bu_{TS},
+  \qquad
+  \|\varpi_b(x)\|=\omega_b,
+\]
+so the ethon performs constant-speed self-rotation.  If
+\(\chi_{TS}(x)=0\), then \(\Omega_b(x)=0\) and the visible fluctuation is
+the identity rotation.
+\end{definition}
+
+\begin{definition}[Activation gates]
+Define the support, polarity, and rotation gates
+\[
+  \chi_1(x)=\mathbf 1_{\sigma(x)\geq1},
+  \qquad
+  \chi_T(x)=\mathbf 1_{x_T>0},
+  \qquad
+  \chi_{TS}(x)=\mathbf 1_{x_T>0\ \mathrm{and}\ x_S>0}.
+\]
+The first gate starts hidden motion.  The second creates hidden
+compass-like polarity.  The third opens observable constant-speed
+rotation.
+\end{definition}
+
+\begin{axiom}[Ihara equation]
+Let
+\[
+  \epsilon_n=(a,\nu_n,R_n,p_n,\varpi_n,\rho_n,\kappa,\lambda)
+\]
+be an ethon instance at observation step \(n\), let
+\[
+  x_n\in P_b,
+  \qquad
+  \eta_n\in V_b
+\]
+be its directional placement and unresolved input at boundary \(b\).  The
+Ihara operator is the map
+\[
+  \Ihara_b:
+  \mathcal M_b\times V_b
+  \longrightarrow
+  \mathcal O_b\times\mathbb R^3\times\SO(3)\times V_b\times R_b
+  \times
+  \Hom_{\GenMes_b}\bigl(\Rel_b(a),\Read_b(a)\bigr)
+\]
+defined by
+\[
+  \boxed{
+  \Ihara_b(\epsilon_n,x_n,\eta_n)
+  =
+  (p_{n+1},\varpi_{n+1},R_{n+1},\nu_{n+1},\rho_{n+1},\mu_{n+1})
+  }
+\]
+with
+\[
+\begin{aligned}
+  p_{n+1}
+  &=
+  P_T(x_n),
+  \\
+  \varpi_{n+1}
+  &=
+  \chi_{TS}(x_n)\,\omega_bu_{TS},
+  \\
+  R_{n+1}
+  &=
+  \exp\!\bigl(\Delta_n[\varpi_{n+1}]_\times\bigr)R_n,
+  \\
+  m_{n+1}
+  &=
+  A_b\nu_n+K_bx_n+L_b\varpi_{n+1}+\eta_n,
+  \\
+  \nu_{n+1}
+  &=
+  \chi_1(x_n)m_{n+1},
+  \\
+  \rho_{n+1}
+  &=
+  \rho_n+\Gamma_b(p_{n+1},R_n,R_{n+1},\nu_n,\nu_{n+1},x_n),
+  \\
+  \mu_{n+1}
+  &=
+  \Pi_b(a,p_{n+1},R_{n+1},\nu_{n+1},\rho_{n+1})
+  \in
+  \Hom_{\GenMes_b}\bigl(\Rel_b(a),\Read_b(a)\bigr).
+\end{aligned}
+\]
+Here \(A_b\) is the non-factorizing three-axis transition matrix,
+\(K_b:P_b\to V_b\) converts six directional argument placements into
+three-axis hidden motion, \(P_T\) is the \(T\)-induced pole map,
+\(u_{TS}\) is the categorical \(T\to S\) rotation axis,
+\(L_b:\mathbb R^3\to V_b\) embeds angular velocity into motion,
+\(\Omega_b\) is the
+skew-symmetric rotation generator, \(\Gamma_b\) records residue with
+\(\Gamma_b(\bot,I_3,I_3,0,0,0)=0\), and \(\Pi_b\) reads the resulting
+state as a general meson pointer:
+\[
+  \Rel_b(a)
+  \xrightarrow{\ \mu_{n+1}\ }
+  \Read_b(a).
+\]
+\end{axiom}
+
+\begin{proposition}[Rotational threshold]
+The Ihara equation gives
+\[
+  x_T=0
+  \Rightarrow
+  p_{n+1}=\bot,\quad
+  \varpi_{n+1}=0,\quad
+  R_{n+1}=R_n,
+\]
+\[
+  x_T>0,\ x_S=0
+  \Rightarrow
+  p_{n+1}=(\Spole\to T,\Npole\to S),\quad
+  \varpi_{n+1}=0,\quad
+  R_{n+1}=R_n,
+\]
+and
+\[
+  x_T>0,\ x_S>0
+  \Rightarrow
+  p_{n+1}=(\Spole\to T,\Npole\to S),\quad
+  \varpi_{n+1}=\omega_bu_{TS},\quad
+  R_{n+1}=\exp(\Delta_n\omega_b[u_{TS}]_\times)R_n.
+\]
+Thus observable ethon fluctuation is exactly the constant-speed
+three-axis rotation opened by the completed \(T\to S\) placement.
+\end{proposition}
+
+\begin{proof}
+The three cases follow directly from \(P_T\), \(\chi_{TS}\), and the
+rotation update in the Ihara equation.
+\end{proof}
+
+\begin{proposition}[Activation trichotomy]
+The Ihara equation implies the three activation regimes required by the
+ethon:
+\[
+\begin{array}{c|c|c|c}
+\text{condition} & p_{n+1} & \varpi_{n+1} & R_{n+1}\\
+\hline
+x_T=0 & \bot & 0 & R_n\\
+x_T>0,\ x_S=0 & (\Spole\to T,\Npole\to S) & 0 & R_n\\
+x_T>0,\ x_S>0 & (\Spole\to T,\Npole\to S)
+  & \omega_bu_{TS}
+  & \exp(\Delta_n\omega_b[u_{TS}]_\times)R_n.
+\end{array}
+\]
+Thus a free ethon is inert, a \(T\)-placed ethon is hiddenly polarized,
+and a \(T,S\)-placed ethon is visibly rotating.
+\end{proposition}
+
+\begin{proof}
+This is immediate from the polarity gate \(\chi_T\) and the rotation gate
+\(\chi_{TS}\).  Other placements may start hidden motion through
+\(\chi_1\), but they do not open the ethon fluctuation channel unless the
+\(T\to S\) rotation condition is satisfied.
+\end{proof}
+
+\begin{proposition}[T--S consequence]
+If the first placed entity is a \(T\)-direction premise and the second
+placed entity is a unit \(S\)-direction stabilizer, then the Ihara
+equation gives
+\[
+  p_{n+1}
+  =
+  (\Spole\to T,\Npole\to S),
+\]
+and
+\[
+  R_{n+1}
+  =
+  \exp(\Delta_n\omega_b[u_{TS}]_\times)R_n,
+  \qquad
+  \|\varpi_{n+1}\|=\omega_b.
+\]
+If the second placed entity is instead \(j\neq S\), the \(T\)-induced
+polarity remains hidden and the constant-speed rotation is not opened.
+\end{proposition}
+
+\begin{definition}[Transition step]
+Let \(n\) index observation steps rather than physical time.  A transition
+step is written
+\[
+  \nu_{n+1}
+  =
+  T_b(\nu_n,\eta_n),
+\]
+where \(b\) is the current observation boundary and \(\eta_n\) is the
+unresolved rotational input at that step.
+\end{definition}
+
+\begin{axiom}[No axis isolation]
+Motion, polarity, or rotation along one ethon axis always perturbs the
+others.  In linearized form,
+\[
+  \Delta\nu
+  =
+  K_b\nu+L_b\varpi+\eta,
+  \qquad
+  K_b=
+  \begin{pmatrix}
+    k_{\CE\CE} & k_{\CE\UD} & k_{\CE\ST}\\
+    k_{\UD\CE} & k_{\UD\UD} & k_{\UD\ST}\\
+    k_{\ST\CE} & k_{\ST\UD} & k_{\ST\ST}
+  \end{pmatrix},
+\]
+where no row and no column is allowed to be purely diagonal under a
+nondegenerate observation boundary.  Equivalently, the transition kernel
+does not factor as
+\[
+  P(\nu'_{\CE},\nu'_{\UD},\nu'_{\ST},R'\mid\nu,R)
+  \neq
+  P_{\CE}P_{\UD}P_{\ST},
+\]
+unless the model explicitly marks the boundary as degenerate.
+\end{axiom}
+
+\begin{definition}[S-facing observation]
+The directly observed ethon pointer faces the stabilizing direction:
+\[
+  \Obs_b(\epsilon):
+  \text{unread relation}
+  \longrightarrow_{\Sdir}
+  \text{stable readable record}.
+\]
+At the pole layer this means
+\[
+  p=(\Spole\text{-face}\to T,\Npole\text{-pole}\to S).
+\]
+The \(\Tdir\)-direction is not erased.  It remains as the hidden premise
+toward which the \(S\)-face turns, and as the risk of back-reading the
+stable pointer into a hidden origin or illegitimate cause.
+\end{definition}
+
+\begin{axiom}[Timeless admissibility]
+An ethon may exist in a typed space that has no intrinsic time flow.
+Its transitions are ordered by comparison, observation, or rewriting,
+not necessarily by physical time:
+\[
+  n\prec n+1
+  \quad\text{means}\quad
+  \text{next readable transition},
+\]
+not necessarily ``later in time.''
+\end{axiom}
+
+% -----------------------------------------------------------------------------
+\section{Stability}
+% -----------------------------------------------------------------------------
+
+\begin{definition}[Stable ethon]
+An ethon is stable at boundary \(b\) when repeated observation steps
+select the same pointer type and the same rotation class up to tolerated
+residue:
+\[
+  \Obs_b(\epsilon_n)
+  \simeq
+  \Obs_b(\epsilon_{n+1})
+  \quad
+  \text{and}
+  \quad
+  \varpi_{n+1}\simeq\varpi_n
+  \quad
+  \text{modulo }\rho_b.
+\]
+The stable object may be still or constantly rotating.  It is not
+residue-free.  It is readable because the residue is bounded, ledgered,
+and compatible with the boundary.
+\end{definition}
+
+\begin{definition}[Ethon bond]
+An ethon bond, formerly called an \(S\)-molecular bond, is not a line
+between two separated ethons.  It is complete overlap at a boundary:
+\[
+  \Bond_b(\epsilon_1,\epsilon_2)
+  \quad\Longleftrightarrow\quad
+  \Overlap_b(\epsilon_1,\epsilon_2).
+\]
+Complete overlap means equality of the readable ethon state at that
+boundary:
+\[
+  a_1=a_2,\quad
+  x_1=x_2,\quad
+  R_1=R_2,\quad
+  p_1=p_2,\quad
+  \Obs_b(\epsilon_1)=\Obs_b(\epsilon_2),
+\]
+with compatible residue ledgers.  Thus a bond is a two-ethon state in
+which the two ethons occupy the same pointer, rotation, polarity, and
+readable boundary condition.
+\end{definition}
+
+\begin{definition}[Ethon polymer]
+An ethon polymer is a typed network
+\[
+  \mathcal P_{\Eth}
+  =
+  (Q_i,\epsilon_i,\beta_{ij},\kappa_{ij}),
+\]
+where \(Q_i\) are carriers, \(\epsilon_i\) are ethons, \(\beta_{ij}\) are
+ethon bonds satisfying \(\Bond_b(\epsilon_i,\epsilon_j)\) when active,
+and \(\kappa_{ij}\) are compatibility contracts.  The polymer is stable
+when the network remains readable under the three-axis rotational
+transition law.
+\end{definition}
+
+\begin{remark}[USD axis for polymers]
+Earlier \(\USD\) fusion and \(\USD\) fission records are read here as
+boundary-visible phases of ethon polymers.  This is a conservative
+typing bridge: a \(\USD\) fission record does not by itself assert a
+physical nuclear fission, chemical rupture, semantic failure, legal
+crime, or policy fact.  Such descent still requires a target-domain
+license.
+\end{remark}
+
+\begin{definition}[Rotational differential]
+Let
+\[
+  \mathcal P_{\Eth,n}
+\]
+be an observed ethon polymer path at boundary \(b\), with rotational
+attitudes \(R_n\in\SO(3)\) and observation increments \(\Delta_n>0\).
+The three-axis rotational differential is
+\[
+  \dot R_n
+  =
+  \frac{1}{\Delta_n}
+  \log(R_{n+1}R_n^{-1})
+  \in\mathfrak{so}(3),
+\]
+whenever a boundary-compatible logarithm branch is available.  A
+rotational discontinuity is recorded by
+\[
+  \Disc_b(n)=1
+\]
+when either no such branch is licensed, or
+\[
+  \left\|\dot R_{n+1}-\dot R_n\right\|>\theta_b,
+\]
+where \(\theta_b\) is the discontinuity tolerance of the boundary.  The
+value \(\Disc_b(n)=0\) means only that no discontinuity is visible at the
+chosen boundary resolution.
+\end{definition}
+
+\begin{definition}[Law reversal]
+A law in the present paper is any licensed transition rule
+\[
+  \Law_b:
+  \mathcal P_{\Eth,n}
+  \longrightarrow
+  \mathcal P_{\Eth,n+1}
+\]
+inside a target boundary \(b\).  The target may be mathematical,
+semantic, physical, legal, institutional, or symbolic, but the target
+reading requires its own license.  Law reversal occurs when a transition
+is read as a lawful continuous update while a visible discontinuity is
+left outside the residue ledger:
+\[
+  \begin{aligned}
+  \LawRev_b(n)
+  \quad\Longleftrightarrow\quad
+  &\Law_b(\mathcal P_{\Eth,n}\to\mathcal P_{\Eth,n+1})
+    \ \text{is asserted},\\
+  &\Disc_b(n)=1,\qquad
+    \Disc_b(n)\not\preceq\rho_{n+1}.
+  \end{aligned}
+\]
+Thus a law reversal is not a moral verdict.  It is a typing failure in
+which the \(T\)-side premise of rupture is read backward as if it were an
+\(S\)-side stabilization.
+\end{definition}
+
+\begin{axiom}[Observer fusion boundary]
+At the ethon layer, the admissible observer operation on polymers is
+fusion:
+\[
+  \Fuse_b:
+  \mathcal P_{\Eth,b}\times\mathcal P_{\Eth,b}
+  \longrightarrow
+  \mathcal P_{\Eth,b}.
+\]
+Fusion means that the observer places or bonds ethons so that one stable
+composite polymer becomes readable at boundary \(b\).  There is no
+primitive observer operation
+\[
+  \Fiss_b:
+  \mathcal P_{\Eth,b}
+  \longrightarrow
+  \mathcal P_{\Eth,b}\times\mathcal P_{\Eth,b}
+\]
+that is licensed as an ethon operation by itself.
+\end{axiom}
+
+\begin{definition}[Observed polymer fission]
+Observed polymer fission is not a primitive ethon operation.  It is the
+boundary-visible record that a previously readable polymer is now read
+through a discontinuity:
+\[
+  \Fiss_b^{\Obs}(\mathcal P_{\Eth})
+  =
+  \Obs_b\bigl(
+  \mathcal P_{\Eth}
+  \rightsquigarrow
+  \mathcal P_{\Eth}^{(1)}\sqcup\mathcal P_{\Eth}^{(2)}
+  \sqcup\rho
+  \bigr).
+\]
+A physical nuclear fission, a molecular rupture, a semantic break in a
+paper, or a legal offense may be mapped into this record only after a
+separate target-domain license.
+\end{definition}
+
+\begin{definition}[Fission disregard]
+Fission disregard is the record that a discontinuity has become visible
+but has not been entered into the residue ledger:
+\[
+  \Disreg_b^{\Fiss}(n)
+  \quad\Longleftrightarrow\quad
+  \Disc_b(n)=1
+  \ \text{and}\
+  \Disc_b(n)\not\preceq\rho_{n+1}.
+\]
+In this terminology, a fission act is treated neutrally as disregard of
+the fission discontinuity.  Its ethical, legal, physical, or scholarly
+status is supplied only by the relevant target theory.
+\end{definition}
+
+\begin{proposition}[Law-reversal lemma]
+Let
+\[
+  F=\Fuse_b(\mathcal P_1,\mathcal P_2)
+\]
+be a proposed observer operation, and let \(R_n\) be the resulting
+three-axis rotational path.  If the operation is read as a continuous
+fusion while its rotational differential has an unledgered
+discontinuity,
+\[
+  \Disreg_b^{\Fiss}(n),
+\]
+then \(F\) is not classified as pure fusion.  It is retyped as fission
+disregard and as a law reversal:
+\[
+  \Plan_b\bigl(F\mid\Disreg_b^{\Fiss}(n)\bigr)
+  \in
+  \Disreg_b^{\Fiss},
+  \qquad
+  \LawRev_b(n).
+\]
+\end{proposition}
+
+\begin{proof}
+By the observer fusion boundary, an observer may introduce a stable
+composite polymer only through fusion.  By observed polymer fission,
+fragmentation is not an ethon operation but a boundary-visible
+discontinuity record.  If the proposed fusion is read as continuous while
+\(\Disc_b(n)=1\) and that discontinuity is not included in
+\(\rho_{n+1}\), then the operation has treated a \(T\)-direction turnover
+as if it were already an \(S\)-facing stabilization.  This is precisely
+the law reversal condition.  Hence the operation is ledgered as fission
+disregard, not as pure fusion.
+\end{proof}
+
+\begin{remark}[Neutral target readings]
+At a semantic boundary, law reversal may appear as a paper whose claims
+ignore a discontinuity in their own transition rule.  At a legal
+boundary, it may appear only if the legal system licenses the transition
+as an offense.  At a physical boundary, it may appear as rupture or
+fission only if the physical model supplies that descent.  The common
+ethon record is merely
+\[
+  \Disreg_b^{\Fiss}(n)
+  \quad\text{and}\quad
+  \LawRev_b(n).
+\]
+It does not identify scholarly error, physical rupture, and crime with
+one another.
+\end{remark}
+
+\begin{remark}[Matter hypothesis]
+The strongest physical reading is the matter hypothesis:
+\[
+  \text{matter}
+  =
+  \text{stable observable phase of admissible ethon polymers}.
+\]
+This is the target implementation condition for using real ethons as a
+matter theory.  It does not by itself replace the established empirical
+content of existing physics.
+\end{remark}
+
+% -----------------------------------------------------------------------------
+\section{Applications}
+% -----------------------------------------------------------------------------
+
+\begin{example}[Quantum carrier pair]
+Let \(Q_1,Q_2\) be quantum carriers.  An ethon bond between their pointer
+states is not a force line across distance.  It is a complete overlap of
+two ethons at a boundary:
+\[
+  (Q_1,Q_2,\Bond_b(\epsilon_1,\epsilon_2))
+  \longmapsto
+  \text{observed pair state}.
+\]
+If the pair is entangled, the \(\ST\)-component is especially dangerous:
+stable correlation may be turned backward into an illicit signal or
+hidden cause.  The ethon ledger forbids that turn unless a physical
+license supplies it.
+\end{example}
+
+\begin{example}[Pion compatibility and purification]
+The pion remains an ordinary physical meson.  Ethon theory does not
+change pion mass, spin, charge states, decay channels, or QCD status.
+The pion is a licensed physical descendant of the meson operation.  The
+ethon is purer than the pion in exactly one sense: it keeps the
+meson-like pointer operation before the operation is fixed to a particular
+physical boundary.  Thus
+\[
+  \pi\text{-meson}
+  =
+  \text{pure meson}
+  +
+  \text{licensed physical boundary data},
+\]
+whereas
+\[
+  \Eth
+  =
+  \text{pure meson with three-axis rotational operational parameters}.
+\]
+This is a compatibility claim, not a replacement claim.
+\end{example}
+
+\begin{example}[Meson family interaction reading]
+Under the flavor-shadow map \(\phi_Q\), a quark--antiquark meson label
+\[
+  q_i\bar q_j
+\]
+is first assigned a ternary ethon signature
+\(\Sig_{\Eth}(q_i\bar q_j)\).  For \(i\neq j\), it is read as
+\[
+  \sigma_{d_i}=+1,\qquad
+  \sigma_{d_j}=-1,\qquad
+  \sigma_k=0\quad(k\neq d_i,d_j),
+  \qquad
+  \phi_Q(d_i)=q_i,\quad
+  \phi_Q(d_j)=q_j.
+\]
+For \(i=j\), the external signature is a closed zero mode on \(d_i\); it
+is separated from absence by the rotational, polarity, and bonding data.
+The resulting family is then classified by the three-axis rotational
+state, the \(T\)-induced polarity, the \(S\)-triggered self-rotation, and
+any ethon bonding condition.  This does not replace the empirical meson
+tables; it supplies a general meson interaction formulation for reading
+many meson species as ternary six-direction signatures refined by one
+three-axis ethon frame.
+\end{example}
+
+\begin{example}[Symbol and token]
+A visible symbol or language-model token can be treated as a carrier in a
+typed symbolic space.  The ethon is the pointer state that makes the mark
+readable as an entity under a boundary.  Two symbolic ethons are bonded
+only when their readable pointer, rotation, polarity, and boundary state
+completely overlap.  Removing the symbol from view does not erase its
+residue from memory, context, or model state.
+\end{example}
+
+\begin{example}[Discontinuity and recovery]
+Nuclear fission, molecular rupture, semantic failure, and legal offense
+are not the same event.  Ethon theory treats them neutrally as possible
+target readings of one abstract pattern only when a licensed boundary
+finds an unledgered discontinuity in a polymer transition.  Recovery
+means preserving the usable knowledge while changing the polymer so that
+the discontinuity is either avoided, bounded, or explicitly entered into
+residue.
+\end{example}
+
+% -----------------------------------------------------------------------------
+\section{Backward Compatibility}
+% -----------------------------------------------------------------------------
+
+\begin{protocol}[Classical physics]
+Classical mechanics, field theory, and thermodynamics are preserved as
+large-scale boundary readings.  The ethon may refine the bookkeeping of
+relation, pointer, and residue, but it may not invalidate successful
+classical limits.
+\end{protocol}
+
+\begin{protocol}[Relativity]
+The ethon is not allowed to introduce a preferred physical rest frame.
+If an ethon model is used in relativistic physics, its placement and
+transition laws must be compatible with the relevant covariance
+requirements of the target theory.
+\end{protocol}
+
+\begin{protocol}[Quantum theory]
+The ethon may be used as a pointer-particle hypothesis for quantum
+events only if it preserves no-signaling, the Born rule, uncertainty
+relations, and the experimentally supported predictions of quantum
+mechanics or quantum field theory.
+\end{protocol}
+
+\begin{protocol}[String theory and extra dimensions]
+The ethon does not require a ten-dimensional ambient space, compactified
+extra dimensions, or a superstring target theory in order to fluctuate.
+Its core fluctuation is rotation in the three-axis ethon frame.  String
+or superstring theory may still be used as a licensed target theory, but
+it is not a prerequisite for the ethon implementation.
+\end{protocol}
+
+\begin{protocol}[Meson theory]
+The ethon may generalize the meson-like act of introducing a pointer
+between unread carriers.  It may not rewrite the established physical
+content of pion and meson physics without an independent physical
+license.
+\end{protocol}
+
+\begin{protocol}[Smart functor records]
+Earlier smart functor records are preserved as observed ethon records.
+The functor is the observed arrow; the ethon is the real pointer
+particle whose observation appears as that arrow.
+\end{protocol}
+
+% -----------------------------------------------------------------------------
+\section{Failure Modes}
+% -----------------------------------------------------------------------------
+
+\begin{enumerate}[leftmargin=*]
+  \item \textbf{Medium collapse.}  Treating the ethon as a spatial ether
+  rather than a pointer particle.
+  \item \textbf{Axis isolation.}  Moving only one directional component
+  while pretending the other two components are unaffected.
+  \item \textbf{Dimensional inflation.}  Explaining ethon fluctuation by
+  adding unnecessary ambient dimensions instead of using three-axis
+  rotation.
+  \item \textbf{Removal fiction.}  Claiming that a placed ethon can be
+  erased without hidden state or residue.
+  \item \textbf{Bond distance error.}  Treating an ethon bond as a line
+  between separated objects rather than complete overlap of two ethons.
+  \item \textbf{Discontinuity disregard.}  Treating a polymer transition
+  with a visible rotational discontinuity as if it were a continuous
+  lawful update.
+  \item \textbf{T-direction overread.}  Turning a stable pointer backward
+  into an unlicensed origin, cause, intention, or substance.
+  \item \textbf{Target overdescent.}  Treating a real ethon of the
+  implementation as a licensed object of a specific target theory without
+  the required target-domain contract.
+\end{enumerate}
+
+% -----------------------------------------------------------------------------
+\section{Core Implementation Summary}
+% -----------------------------------------------------------------------------
+
+The minimal implementation is the following interface:
+\[
+  \epsilon
+  =
+  (a,\nu_{\CE},\nu_{\UD},\nu_{\ST},R,p,\varpi,\rho,\kappa,\lambda),
+\]
+with:
+\begin{enumerate}[leftmargin=*]
+  \item ternary six-direction signatures
+  \(\Sig_{\Eth}\in\{-1,0,1\}^{6}\) for six-quark-flavor interaction
+  signs;
+  \item single-particle formulation of interactions among the six quark
+  flavors through those signatures;
+  \item observer placement in arbitrary typed spaces;
+  \item no total erasure operation;
+  \item a three-axis rotational frame;
+  \item no initial up--down polarity;
+  \item hidden \(T\)-induced compass polarity;
+  \item constant-speed self-rotation when \(T\) and \(S\) placements are
+  both active;
+  \item the \(T\to S\)-based Ihara equation as the general meson update
+  law;
+  \item non-factorizing inter-axis dynamics;
+  \item S-facing observed pointer form;
+  \item ethon bonding as complete overlap of two ethons;
+  \item observer fusion as the only primitive polymer operation;
+  \item rotational discontinuity detection through
+  \(\dot R_n=\Delta_n^{-1}\log(R_{n+1}R_n^{-1})\);
+  \item the law-reversal lemma: unledgered rotational discontinuity is
+  fission disregard, not pure fusion;
+  \item residue conservation;
+  \item backward compatibility with established target theories;
+  \item physical interpretation only by explicit license.
+\end{enumerate}
+
+Thus the ethon is implemented as a real pointer particle: freely
+placeable, non-removable, stable across typed spaces, independent of
+global time flow, rotationally fluctuating in three axes, and dynamically
+coupled across all three rotational axes.
+
+\begin{thebibliography}{9}
+
+\bibitem{Yukawa1935}
+Hideki Yukawa.
+\newblock On the Interaction of Elementary Particles. I.
+\newblock \emph{Proceedings of the Physico-Mathematical Society of Japan},
+17:48--57, 1935.
+\newblock Reprinted in \emph{Progress of Theoretical Physics Supplement},
+1:1--10, 1955.
+\newblock \url{https://doi.org/10.11429/ppmsj1919.17.0_48}.
+
+\end{thebibliography}
+
+\end{document}
