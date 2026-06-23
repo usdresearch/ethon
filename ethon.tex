@@ -65,6 +65,8 @@
 \newcommand{\LawRev}{\mathsf{LawRev}}
 \newcommand{\Disc}{\mathsf{Disc}}
 \newcommand{\Disreg}{\mathsf{Disreg}}
+\newcommand{\Ptr}{\mathsf{Ptr}}
+\newcommand{\Quanta}{\mathsf{Quanta}}
 \newcommand{\Rel}{\mathsf{Rel}}
 \newcommand{\Read}{\mathsf{Read}}
 \newcommand{\GenMes}{\mathsf{GenMes}}
@@ -78,117 +80,107 @@
 \DeclareMathOperator{\SO}{SO}
 \DeclareMathOperator{\Skew}{skew}
 
-\title{Ethon -- The Pointer Particle}
-\author{Shuhei Ihara\\
-\small written in the formal posture of a doctoral thesis\\
-\small under the trans-temporal supervision of Hideki Yukawa}
+\title{Ethon -- A Pointer-Field Quantum Candidate}
+\author{Shuhei Ihara}
 \date{\today}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-This paper specifies the ethon as a real pointer particle of the
-theory.  At the first layer of interpretation, the ethon is a
-single-particle formulation of interactions among the six quark flavors:
-the six flavors are represented as six directional arguments inside one
-real particle, and their readable interaction is represented as
-three-axis fluctuation.  Each direction also carries a ternary
-interaction sign in \(\{-1,0,1\}\), giving \(3^6\) external
-flavor-interaction signatures before rotation, polarity, and bonding
-data are read.  It is a general meson implementation obtained by
-assigning boundary-free operational parameters to Yukawa's meson idea:
-not a
-replacement for the pion, but a purer meson whose role is to point from
-an unread relation to a stable readable entity before any particular
-physical boundary, mass, charge state, decay channel, or detector
-realization is imposed.  The ethon has three transition axes:
-compression--exposition, upward--downward localization, and
-stabilization--turnover.  Its fluctuation is simply rotation in this
-three-axis frame; no ten-dimensional or superstring-like ambient space is
-required by the core implementation.  As a free functor it remains inert
-and has no up--down polarity.  When an entity is placed in the
-\(T\)-direction, hidden polarity is born: the \(S\)-face turns toward the
-\(T\)-direction and the \(N\)-pole points toward \(S\).  This motion is
-not directly observable.  When an entity is also placed in the
-\(S\)-direction, the ethon enters constant-speed self-rotation.  The
-governing law is the Ihara equation, written around the oriented
-\(T\to S\) premise--stabilization arrow.  It gives the general meson
-update from directional placement to hidden polarity, three-axis
-rotation, residue, and readable pointer form.  Ethon bonding, formerly
-called \(S\)-molecular bonding, is the state in which two ethons overlap
-completely.  At the observer-operation layer, fusion is the only
-admissible ethon operation; a fusion whose readability depends on
-ignoring an observer-readable discontinuity is reclassified as fission
-disregard and stored as residue.  It can be placed by an observer in any
-typed space,
-including spaces that do not carry an external time flow, but it cannot
-be removed; attempted removal only hides the ethon or transfers it to
-residue.  Motion in any one directional component is required to perturb
-the others.  The only source text cited in this version is Hideki
-Yukawa's original meson paper,
-\emph{On the Interaction of Elementary Particles. I} \cite{Yukawa1935}.
+This paper introduces the ethon as a hypothetical quantum of a
+boundary-indexed pointer field.  The field is not proposed as a
+replacement for quantum mechanics, quantum field theory, QCD, relativity,
+or established meson physics.  It is a typed state-transition model whose
+local excitation, called an ethon, points from an unread relation to a
+stable readable record.  The construction is inspired by Yukawa's act of
+introducing a particle-like mediator for an unread nuclear relation, but
+the ethon is not identified with the pion and is not asserted here to be
+an experimentally confirmed particle.  Its core data are six directional
+arguments, three rotational axes, boundary placement, hidden polarity,
+residue, and bonding by complete overlap.  At a meson boundary, existing
+QCD quark--antiquark labels may be read as ternary pointer-field
+signatures in \(\{-1,0,1\}^{6}\); this is a readability hypothesis, not a
+derivation of quark flavor or a replacement for QCD quantum numbers.  The
+Ihara equation is presented as a typed update rule for the pointer-field
+state, not as a physical equation of motion.  Physical interpretation is
+therefore treated as a later research program: an ethon can be promoted
+from formal quantum candidate to physical particle only after a field
+action, covariance properties, spin-statistics assignment, couplings,
+conservation laws, observables, and experimental constraints are supplied.
 \end{abstract}
 
 \tableofcontents
 
 % -----------------------------------------------------------------------------
-\section{Existence Postulate}
+\section{Pointer Field Postulate}
 % -----------------------------------------------------------------------------
 
-The ethon is specified here as a real particle of the present theory.
-Its existence is a primitive postulate, not a metaphorical convenience and
-not a theorem derived from other particles.  The question of how an
-ethon is detected by an external physical apparatus is separate from
-the question of whether the implementation contains ethons.
-
-\begin{axiom}[Ethon existence]
-For every typed space \(X\) and every admissible observer boundary \(b\),
-there is a class of ethon instances
+\begin{definition}[Boundary-indexed pointer field]
+For a typed space \(X\) and an admissible observer boundary \(b\), a
+boundary-indexed pointer field is a formal field
 \[
-  \Eth_b(X).
+  \Ptr_b(X)
 \]
-These instances are real objects of the implementation.  They may be
-visible, hidden, or residue-carried at a boundary, but they are not
-optional annotations.
+whose local readable excitation points from an unread relation to a
+stable readable record:
+\[
+  \Rel_b(a)\longrightarrow\Read_b(a).
+\]
+The field is defined at the level of typed state transitions.  A physical
+field theory for \(\Ptr_b(X)\) is a further structure, not assumed at the
+outset.
+\end{definition}
+
+The ethon is specified here as a quantum candidate of this pointer field.
+Its existence is a primitive postulate of the present formal theory, not
+a claim that an already confirmed natural particle has been detected.
+The question of how an ethon would be produced or detected by an external
+physical apparatus is part of the later physical research program.
+
+\begin{axiom}[Ethon quantum-candidate existence]
+For every typed space \(X\) and every admissible observer boundary \(b\),
+there is a class of ethon candidates
+\[
+  \Eth_b(X)\subseteq \Quanta(\Ptr_b(X)).
+\]
+These candidates are formal objects of the implementation.  They may
+be visible, hidden, or residue-carried at a boundary, but their physical
+realization requires an additional target-domain license.
 \end{axiom}
 
 The interface is intentionally conservative.  It does not override quantum
 mechanics, quantum field theory, relativity, meson physics, or ordinary
-symbolic computation.  It states the additional structure that a real
-ethon carries while remaining backward-compatible with those target
+symbolic computation.  It states the additional structure that an ethon
+candidate carries while remaining backward-compatible with those target
 theories.
 
-\begin{remark}[Yukawa posture]
-This paper treats Hideki Yukawa as the trans-temporal doctoral supervisor
-of the project.  This is a formal scholarly posture and a declaration of
-lineage: the ethon is developed as a purified general meson after
-Yukawa's act of placing a particle-like pointer inside an unread nuclear
-relation \cite{Yukawa1935}.  It is not a claim of institutional
-supervision, personal endorsement, or historical intention.  The neutral
-polymer lemmas below are formal consequences of the ethon notation, not
-claims that Yukawa wrote them in this notation.
+\begin{remark}[Yukawa inspiration]
+Yukawa's meson paper is used here as a source of formal inspiration:
+an unread interaction may become tractable by introducing a
+particle-like mediator \cite{Yukawa1935}.  The present paper does not
+claim institutional supervision, personal endorsement, historical
+intention, or a physical derivation from Yukawa's original theory.
 \end{remark}
 
 \begin{remark}[Name and pronunciation]
-The particle is named \emph{Ethon} and pronounced ``Ee-thon.''  The name
-is chosen to sound like a simple particle name, to connect the initial
-sound to the Ihara equation, and to admit a mythic reading through
-Aithon, the burning figure of the Prometheus cycle.  The ethon is not the
-tormenting bird of that cycle.  It is the pointer particle that
-stabilizes Promethean fire through the \(T\to S\) Ihara equation.
+The candidate is named \emph{Ethon} and pronounced ``Ee-thon.''  The name
+is chosen to sound like a simple particle name and to connect the initial
+sound to the Ihara equation.  The name does not supply evidence for
+physical existence.
 \end{remark}
 
-\begin{definition}[Quark-flavor interaction formulation]
-Let the six quark-flavor names be represented by
+\begin{definition}[Meson-boundary flavor reading]
+Let the six quark-flavor names be denoted by
 \[
   \Qflav_6
   =
   \{c,d,b,s,t,u\}.
 \]
-The ethon direction frame carries the surjective flavor-shadow map
+At a licensed meson boundary, the ethon direction frame may carry a
+flavor-reading dictionary
 \[
-  \phi_Q:\Arg_{\Eth}\twoheadrightarrow\Qflav_6
+  \phi_Q:\Arg_{\Eth}\to\Qflav_6
 \]
 given by
 \[
@@ -199,21 +191,37 @@ given by
   \phi_Q(T)=t,\qquad
   \phi_Q(U)=u.
 \]
-The corresponding quark-flavor interaction formulation is
+The corresponding pointer-field reading is
 \[
   \Qint_{\Eth}(\Qflav_6)
   =
   (\Arg_{\Eth},\ V_{\CE}\oplus V_{\UD}\oplus V_{\ST},\ \Rot).
 \]
-The six flavors are not asserted here to be destroyed or replaced.  They
-are formulated in one existing ethon as six directional arguments whose
-readable interactions are expressed through three-axis rotational
-fluctuation.  The ethon is the real pointer particle by which their
-six-flavor interaction pattern is formalized.
+This is not a claim that the ethon derives, replaces, or exhausts QCD
+flavor.  It is a readability hypothesis: at a meson boundary, existing
+quark--antiquark labels may be read as directional pointer-field roles
+whose visible organization is constrained by three-axis rotational data.
 \end{definition}
 
-\begin{definition}[Ternary interaction signature]
-A quark-flavor interaction state has an external ethon signature
+\begin{definition}[Meson-boundary spin reading]
+In the ethon model, a meson boundary is not merely a container for two
+already-readable labels.  It is a boundary at which a coupled spin
+pattern may make two quark roles readable:
+\[
+  \Spin_b^{\mathrm{mes}}:
+  \Arg_{\Eth}\times\Arg_{\Eth}\times\Rot_b
+  \longrightarrow
+  \Read_b(q_i\bar q_j).
+\]
+Thus the phrase ``the meson defines quarks by spin'' means the following
+restricted statement: within a licensed ethon reading, the meson boundary
+defines the readable quark and antiquark roles through its spin-coupled
+pointer pattern.  It does not mean that spin and flavor are the same
+physical degree of freedom, nor that QCD quarks are replaced.
+\end{definition}
+
+\begin{definition}[Ternary meson-boundary signature]
+A meson-boundary reading state has an external ethon signature
 \[
   \Sig_{\Eth}\in\{-1,0,1\}^{\Arg_{\Eth}},
 \]
@@ -221,8 +229,8 @@ with components \(\sigma_i\) for \(i\in\{C,D,E,S,T,U\}\).  The values
 are read as
 \[
   \begin{aligned}
-  +1&:\text{quark-facing direction},\\
-  -1&:\text{antiquark-facing direction},\\
+  +1&:\text{quark-role-facing direction},\\
+  -1&:\text{antiquark-role-facing direction},\\
    0&:\text{neutral, unpolarized, or closed direction}.
   \end{aligned}
 \]
@@ -242,31 +250,35 @@ For a hidden-flavor state \(q_i\bar q_i\), the external signature is
 neutral in that direction, \(\sigma_{d_i}=0\), but the channel is not
 absent.  It is a closed zero mode carried by the rotational, polarity,
 and bonding parameters of the ethon.  Thus the ternary signature is the
-flavor-interaction skeleton, not the whole meson identity.
+flavor-reading skeleton, not the whole meson identity; color singlet
+structure, spin, orbital angular momentum, total angular momentum,
+parity, charge conjugation, mass, and decay channels remain target-domain
+data.
 \end{definition}
 
-\begin{definition}[Pointer particle]
-A pointer particle is a particle whose primary observable form is not a
-mass point or a medium, but an oriented transition:
+\begin{definition}[Pointer-field quantum candidate]
+A pointer-field quantum candidate is a formal local excitation whose
+primary observable form is not a mass point or a medium, but an oriented
+transition:
 \[
   \epsilon^{\Obs}_b:
   \text{unread relation}
   \longrightarrow
   \text{stable readable entity}.
 \]
-The arrow is part of the particle's observable signature.  An ethon is
-the pointer particle specified in this document.
+The arrow is part of the candidate's observable signature.  An ethon is
+the pointer-field quantum candidate specified in this document.
 \end{definition}
 
 \begin{remark}[Not a medium]
 The ethon is not a revival of mechanical ether.  It may be placed in a
 space, but it is not a substance filling space.  It is a direction-bearing
-particle of relation, transition, and stabilization.
+candidate quantum of relation, transition, and stabilization.
 \end{remark}
 
-\begin{definition}[Pure meson]
-A pure meson is a meson stripped of fixed empirical boundary data and
-retaining only its operational pointer role:
+\begin{definition}[Pure-meson reading]
+A pure-meson reading is a meson-inspired operation stripped of fixed
+empirical boundary data and retaining only its pointer role:
 \[
   \text{unread relation}
   \longrightarrow
@@ -274,7 +286,8 @@ retaining only its operational pointer role:
   \longrightarrow
   \text{stable readable interaction}.
 \]
-The ethon is the pure meson of this paper.  It is prior to any
+The ethon is not thereby identified with an empirical meson.  It is a
+pointer-field quantum candidate whose meson-like reading is prior to any
 particular mass, charge, decay channel, detector boundary, or historical
 realization.
 \end{definition}
@@ -412,9 +425,9 @@ The six directional arguments of an ethon are
   =
   \{C,D,E,S,T,U\}.
 \]
-They are also the six roles of the quark-flavor interaction formulation
-through the surjection
-\(\phi_Q:\Arg_{\Eth}\twoheadrightarrow\Qflav_6\).
+At a licensed meson boundary, they may also be read as the six roles of
+the flavor-reading dictionary
+\(\phi_Q:\Arg_{\Eth}\to\Qflav_6\).
 Each directional argument carries a ternary interaction sign
 \[
   \sigma_i\in\{-1,0,1\}.
@@ -577,13 +590,14 @@ completed.
 \section{The Ihara Equation}
 % -----------------------------------------------------------------------------
 
-The Ihara equation is the central equation of the implementation.  It is
-not merely a notation for transition.  It is the operator that turns
-directional argument placement into hidden motion, hidden polarity,
-constant-speed rotation, residue, and general meson reading.
+The Ihara equation is the central typed update rule of the implementation.
+It turns directional argument placement into hidden motion, hidden
+polarity, constant-speed rotation, residue, and meson-boundary pointer
+reading.  It is not asserted here to be a physical equation of motion.
 
-\begin{definition}[General meson reading]
-A general meson reading at boundary \(b\) is a morphism in the boundary
+\begin{definition}[Meson-boundary pointer reading]
+A meson-boundary pointer reading at boundary \(b\) is a morphism in the
+boundary
 category \(\GenMes_b\):
 \[
   \mu\in
@@ -591,10 +605,10 @@ category \(\GenMes_b\):
 \]
 where \(\Rel_b(a)\) is an unread relation anchored at \(a\), \(\mu\) is
 the meson-like pointer update, and \(\Read_b(a)\) is the stable readable
-interaction obtained at that boundary.  The ethon is the concrete
-pointer particle whose update realizes this general meson reading without
-first choosing a particular physical mass, charge state, decay channel,
-or detector boundary.
+interaction obtained at that boundary.  The ethon is the formal
+pointer-field quantum candidate whose update realizes this
+meson-boundary reading without first choosing a particular physical mass,
+charge state, decay channel, or detector boundary.
 \end{definition}
 
 \begin{definition}[Directional category]
@@ -798,7 +812,7 @@ three-axis hidden motion, \(P_T\) is the \(T\)-induced pole map,
 \(\Omega_b\) is the
 skew-symmetric rotation generator, \(\Gamma_b\) records residue with
 \(\Gamma_b(\bot,I_3,I_3,0,0,0)=0\), and \(\Pi_b\) reads the resulting
-state as a general meson pointer:
+state as a meson-boundary pointer:
 \[
   \Rel_b(a)
   \xrightarrow{\ \mu_{n+1}\ }
@@ -1191,9 +1205,9 @@ The strongest physical reading is the matter hypothesis:
   =
   \text{stable observable phase of admissible ethon polymers}.
 \]
-This is the target implementation condition for using real ethons as a
-matter theory.  It does not by itself replace the established empirical
-content of existing physics.
+This is a target implementation condition for a future physical reading
+of ethon candidates as a matter theory.  It does not by itself replace
+the established empirical content of existing physics.
 \end{remark}
 
 % -----------------------------------------------------------------------------
@@ -1215,25 +1229,24 @@ hidden cause.  The ethon ledger forbids that turn unless a physical
 license supplies it.
 \end{example}
 
-\begin{example}[Pion compatibility and purification]
+\begin{example}[Pion compatibility and meson-boundary reading]
 The pion remains an ordinary physical meson.  Ethon theory does not
 change pion mass, spin, charge states, decay channels, or QCD status.
-The pion is a licensed physical descendant of the meson operation.  The
-ethon is purer than the pion in exactly one sense: it keeps the
-meson-like pointer operation before the operation is fixed to a particular
-physical boundary.  Thus
+The pion is a licensed physical object of meson theory.  The ethon
+reading keeps only the pointer-field role that a meson boundary may play
+before the reading is fixed to a particular physical boundary.  Thus
 \[
   \pi\text{-meson}
   =
-  \text{pure meson}
+  \text{QCD meson}
   +
-  \text{licensed physical boundary data},
+  \text{empirical boundary data},
 \]
 whereas
 \[
   \Eth
   =
-  \text{pure meson with three-axis rotational operational parameters}.
+  \text{pointer-field quantum candidate with meson-boundary reading}.
 \]
 This is a compatibility claim, not a replacement claim.
 \end{example}
@@ -1244,7 +1257,8 @@ Under the flavor-shadow map \(\phi_Q\), a quark--antiquark meson label
   q_i\bar q_j
 \]
 is first assigned a ternary ethon signature
-\(\Sig_{\Eth}(q_i\bar q_j)\).  For \(i\neq j\), it is read as
+\(\Sig_{\Eth}(q_i\bar q_j)\) only after a licensed meson spin boundary
+\(\Spin_b^{\mathrm{mes}}\) is chosen.  For \(i\neq j\), it is read as
 \[
   \sigma_{d_i}=+1,\qquad
   \sigma_{d_j}=-1,\qquad
@@ -1254,13 +1268,14 @@ is first assigned a ternary ethon signature
   \phi_Q(d_j)=q_j.
 \]
 For \(i=j\), the external signature is a closed zero mode on \(d_i\); it
-is separated from absence by the rotational, polarity, and bonding data.
+is separated from absence by the spin-boundary, rotational, polarity, and
+bonding data.
 The resulting family is then classified by the three-axis rotational
 state, the \(T\)-induced polarity, the \(S\)-triggered self-rotation, and
 any ethon bonding condition.  This does not replace the empirical meson
-tables; it supplies a general meson interaction formulation for reading
-many meson species as ternary six-direction signatures refined by one
-three-axis ethon frame.
+tables; it supplies a possible pointer-field reading of meson labels as
+ternary six-direction signatures refined by a spin-coupled, three-axis
+ethon frame.
 \end{example}
 
 \begin{example}[Symbol and token]
@@ -1301,10 +1316,29 @@ requirements of the target theory.
 \end{protocol}
 
 \begin{protocol}[Quantum theory]
-The ethon may be used as a pointer-particle hypothesis for quantum
+The ethon may be used as a pointer-field quantum candidate for quantum
 events only if it preserves no-signaling, the Born rule, uncertainty
 relations, and the experimentally supported predictions of quantum
 mechanics or quantum field theory.
+\end{protocol}
+
+\begin{protocol}[Physical particle program]
+Promoting an ethon from formal quantum candidate to physical particle
+requires additional data not supplied by the core implementation:
+\[
+  \begin{gathered}
+  \text{field action},\quad
+  \text{covariance law},\quad
+  \text{spin-statistics assignment},\\
+  \text{couplings},\quad
+  \text{conservation laws},\quad
+  \text{observables}.
+  \end{gathered}
+\]
+It must also specify how the pointer field interacts, if at all, with
+standard-model fields or gravity, and it must produce constraints or
+predictions that can be compared with experiment.  Without this program,
+the ethon remains a quantum candidate of the formal pointer field.
 \end{protocol}
 
 \begin{protocol}[String theory and extra dimensions]
@@ -1324,8 +1358,8 @@ license.
 
 \begin{protocol}[Smart functor records]
 Earlier smart functor records are preserved as observed ethon records.
-The functor is the observed arrow; the ethon is the real pointer
-particle whose observation appears as that arrow.
+The functor is the observed arrow; the ethon is the pointer-field quantum
+candidate whose observation appears as that arrow.
 \end{protocol}
 
 % -----------------------------------------------------------------------------
@@ -1334,7 +1368,7 @@ particle whose observation appears as that arrow.
 
 \begin{enumerate}[leftmargin=*]
   \item \textbf{Medium collapse.}  Treating the ethon as a spatial ether
-  rather than a pointer particle.
+  rather than a pointer-field quantum candidate.
   \item \textbf{Axis isolation.}  Moving only one directional component
   while pretending the other two components are unaffected.
   \item \textbf{Dimensional inflation.}  Explaining ethon fluctuation by
@@ -1349,9 +1383,9 @@ particle whose observation appears as that arrow.
   lawful update.
   \item \textbf{T-direction overread.}  Turning a stable pointer backward
   into an unlicensed origin, cause, intention, or substance.
-  \item \textbf{Target overdescent.}  Treating a real ethon of the
-  implementation as a licensed object of a specific target theory without
-  the required target-domain contract.
+  \item \textbf{Target overdescent.}  Treating a formal ethon candidate as
+  a licensed object of a specific target theory without the required
+  target-domain contract.
 \end{enumerate}
 
 % -----------------------------------------------------------------------------
@@ -1367,10 +1401,11 @@ The minimal implementation is the following interface:
 with:
 \begin{enumerate}[leftmargin=*]
   \item ternary six-direction signatures
-  \(\Sig_{\Eth}\in\{-1,0,1\}^{6}\) for six-quark-flavor interaction
+  \(\Sig_{\Eth}\in\{-1,0,1\}^{6}\) for meson-boundary flavor-reading
   signs;
-  \item single-particle formulation of interactions among the six quark
-  flavors through those signatures;
+  \item pointer-field quantum-candidate formulation;
+  \item meson-boundary quark-role readings through spin-coupled
+  signatures;
   \item observer placement in arbitrary typed spaces;
   \item no total erasure operation;
   \item a three-axis rotational frame;
@@ -1378,8 +1413,8 @@ with:
   \item hidden \(T\)-induced compass polarity;
   \item constant-speed self-rotation when \(T\) and \(S\) placements are
   both active;
-  \item the \(T\to S\)-based Ihara equation as the general meson update
-  law;
+  \item the \(T\to S\)-based Ihara equation as a typed
+  meson-boundary pointer update rule;
   \item non-factorizing inter-axis dynamics;
   \item S-facing observed pointer form;
   \item ethon bonding as complete overlap of two ethons;
@@ -1390,19 +1425,21 @@ with:
   fission disregard, not pure fusion;
   \item residue conservation;
   \item backward compatibility with established target theories;
-  \item physical interpretation only by explicit license.
+  \item physical-particle interpretation only by explicit license and
+  additional field-theoretic data.
 \end{enumerate}
 
-Thus the ethon is implemented as a real pointer particle: freely
-placeable, non-removable, stable across typed spaces, independent of
-global time flow, rotationally fluctuating in three axes, and dynamically
-coupled across all three rotational axes.
+Thus the ethon is implemented as a pointer-field quantum candidate:
+freely placeable in the formal model, non-removable, stable across typed
+spaces, independent of global time flow, rotationally fluctuating in
+three axes, and dynamically coupled across all three rotational axes.
 
-\paragraph{Acknowledgement.}
+\paragraph{Acknowledgement and AI-use disclosure.}
 The author expresses gratitude to Professor Hideki Yukawa for the meson
-idea that made this paper's pointer-particle formulation conceivable,
-and to OpenAI GPT-5.5 for helping the author connect Yukawa's legacy with
-the present ethon formulation.
+idea that made this paper's pointer-field formulation conceivable.  The
+author used OpenAI GPT-5.5 for drafting support, terminology comparison,
+and organization of the present formulation.  The author remains
+responsible for the final claims, wording, and errors.
 
 \begin{thebibliography}{9}
 
